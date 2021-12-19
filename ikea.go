@@ -10,7 +10,6 @@ import (
 	"net/http"
 	"os"
 	"path/filepath"
-	"strings"
 	"sync"
 )
 
@@ -46,7 +45,7 @@ type FeedEntry struct {
 
 // Filename returns the filename portion of a FeedEntry.BinaryURL.
 func (fe FeedEntry) Filename() string {
-	return fe.BinaryURL[strings.LastIndex(fe.BinaryURL, "/")+1:]
+	return filepath.Base(fe.BinaryURL)
 }
 
 // ParseFeed retrieves and parses an IKEA firmware feed for given url.
